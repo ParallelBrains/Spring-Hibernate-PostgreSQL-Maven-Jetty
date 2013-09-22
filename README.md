@@ -1,11 +1,11 @@
 # A Java/Spring template project ready to be deployed to Heroku
 
 Built on frameworks including:
-Spring MVC 
-Hibernate 
-PostgreSQL
-Maven
-Jetty
+* Spring MVC 
+* Hibernate 
+* PostgreSQL
+* Maven
+* Jetty
 
 and
 
