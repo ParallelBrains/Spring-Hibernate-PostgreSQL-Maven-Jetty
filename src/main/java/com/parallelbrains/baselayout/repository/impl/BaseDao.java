@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BaseDao<T extends BaseModel> {
+public abstract class BaseDao<T extends BaseModel> {
 
     private Class<T> clazz
             = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
