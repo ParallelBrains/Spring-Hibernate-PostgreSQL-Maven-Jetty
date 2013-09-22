@@ -1,8 +1,6 @@
 package com.parallelbrains.baselayout.controller;
 
-import java.util.List;
-
-import com.parallelbrains.baselayout.repository.PersonDao;
+import com.parallelbrains.baselayout.config.RouteConfig;
 import com.parallelbrains.baselayout.model.Person;
 import com.parallelbrains.baselayout.service.PersonManager;
 import org.slf4j.Logger;
@@ -15,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/person/")
+@RequestMapping(RouteConfig.PERSON_BASE_MAPPING)
 public class PersonController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
@@ -24,7 +24,7 @@ public class PersonController {
     @Autowired
     private PersonManager personManager;
 
-    @RequestMapping(method = RequestMethod.GET, value = "edit")
+    @RequestMapping(value = RouteConfig.PERSON_EDIT, method = RequestMethod.GET)
     public ModelAndView editPerson(@RequestParam(value = "id", required = false) Long id) {
         LOGGER.debug("Received request to edit person id : " + id);
 
@@ -43,7 +43,7 @@ public class PersonController {
         return mav;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "edit")
+    @RequestMapping(value = RouteConfig.PERSON_EDIT, method = RequestMethod.POST)
     public String savePerson(@ModelAttribute Person person) {
         LOGGER.debug("Received postback on person " + person);
 
@@ -53,7 +53,7 @@ public class PersonController {
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "list")
+    @RequestMapping(value = RouteConfig.PERSON_LIST, method = RequestMethod.GET)
     public ModelAndView listPeople() {
         LOGGER.debug("Received request to list persons");
 

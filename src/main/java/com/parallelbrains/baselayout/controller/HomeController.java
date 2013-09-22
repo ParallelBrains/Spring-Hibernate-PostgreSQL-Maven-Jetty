@@ -1,5 +1,6 @@
 package com.parallelbrains.baselayout.controller;
 
+import com.parallelbrains.baselayout.config.RouteConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class HomeController {
     /**
      * Selects the home page and populates the model with a message
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = RouteConfig.INDEX, method = RequestMethod.GET)
     public String home(Model model) {
 
         model.addAttribute("controllerMessage", "Please sign-up or register.");

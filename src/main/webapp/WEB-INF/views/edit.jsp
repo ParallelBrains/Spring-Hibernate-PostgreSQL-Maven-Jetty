@@ -21,5 +21,8 @@
     </p>
     <input type="submit" value="Save"/>
 </form:form>
+<br/>
+<br/>
+<a href="person/list">Go to the person list</a>
 </body>
 </html>
