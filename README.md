@@ -53,3 +53,6 @@ git push heroku master
 ```sh
 heroku open
 ```
+## Useful links
+
+* https://devcenter.heroku.com/articles/getting-started-with-spring-mvc-hibernate
