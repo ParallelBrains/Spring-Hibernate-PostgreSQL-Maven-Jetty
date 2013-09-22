@@ -14,8 +14,10 @@
 <br/>
 <a href="edit"> Add Person</a>
 <br/>
-<a href="/baselayout">Go to homepage</a>
+
+<!-- todo we should get app running on localhost:8080 only instead of localhost:8080/baselayout for these links to work -->
+<a href="/">Go to homepage</a>
 <br/>
-<a href="/baselayout/j_spring_security_logout">Logout</a>
+<a href="/j_spring_security_logout">Logout</a>
 </body>
 </html>
