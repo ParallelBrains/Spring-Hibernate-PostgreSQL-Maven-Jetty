@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository(value = "personDao")
 @Transactional(propagation = Propagation.MANDATORY)
-public class PersonDaoImpl implements PersonDao {
+public class PersonDaoImpl extends BaseDao<Person> implements PersonDao {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -23,19 +23,6 @@ public class PersonDaoImpl implements PersonDao {
 
     public Person get(Long id) {
         return entityManager.find(Person.class, id);
-    }
-
-    public List<Person> getAll() {
-        return entityManager.createQuery("select p from Person p").getResultList();
-    }
-
-    public Person save(Person person) {
-        if (person.getId() == null) {
-            entityManager.persist(person);
-            return person;
-        } else {
-            return entityManager.merge(person);
-        }
     }
 
 }

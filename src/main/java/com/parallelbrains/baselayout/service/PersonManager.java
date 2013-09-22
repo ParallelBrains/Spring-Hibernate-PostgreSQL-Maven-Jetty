@@ -10,6 +10,6 @@ public interface PersonManager {
 
     List<Person> getAll();
 
-    Person save(Person person);
+    void save(Person person);
 
 }

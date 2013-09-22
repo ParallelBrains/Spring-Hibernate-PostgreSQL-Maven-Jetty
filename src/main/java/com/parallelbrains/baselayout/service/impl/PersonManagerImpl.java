@@ -29,7 +29,7 @@ public class PersonManagerImpl implements PersonManager {
         return personDao.getAll();
     }
 
-    public Person save(Person person) {
-        return personDao.save(person);
+    public void save(Person person) {
+        personDao.save(person);
     }
 }
