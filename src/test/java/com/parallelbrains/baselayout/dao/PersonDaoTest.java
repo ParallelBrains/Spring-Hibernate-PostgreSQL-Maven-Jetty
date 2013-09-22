@@ -1,9 +1,9 @@
-package com.tquila.demo.dao;
+package com.parallelbrains.baselayout.dao;
 
 import java.util.List;
 
-import com.tquila.demo.controller.DataInitializer;
-import com.tquila.demo.model.Person;
+import com.parallelbrains.baselayout.controller.DataInitializer;
+import com.parallelbrains.baselayout.model.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

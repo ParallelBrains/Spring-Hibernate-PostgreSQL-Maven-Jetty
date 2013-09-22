@@ -1,4 +1,4 @@
-package com.tquila.demo.model;
+package com.parallelbrains.baselayout.model;
 
 import java.io.Serializable;
 
