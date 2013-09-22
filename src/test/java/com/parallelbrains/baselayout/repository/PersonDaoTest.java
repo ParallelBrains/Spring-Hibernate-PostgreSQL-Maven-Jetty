@@ -1,4 +1,4 @@
-package com.parallelbrains.baselayout.dao;
+package com.parallelbrains.baselayout.repository;
 
 import java.util.List;
 
@@ -42,16 +42,16 @@ public class PersonDaoTest {
 	@Test
 	public void shouldLoadAPerson() {
 		Long template = dataInitializer.people.get(0);
-		Person p = personDao.find(template);
+		Person p = personDao.get(template);
 
 		Assert.assertNotNull("Person not found!", p);
 		Assert.assertEquals(template, p.getId());
 	}
 
 	public void shouldListPeople() {
-		List<Person> people = personDao.getPeople();
-		Assert.assertEquals(DataInitializer.PERSON_COUNT, people.size());
+		List<Person> people = personDao.getAll();
 
+		Assert.assertEquals(DataInitializer.PERSON_COUNT, people.size());
 	}
 
 }

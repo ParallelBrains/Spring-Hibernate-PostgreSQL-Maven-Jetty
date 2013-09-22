@@ -2,8 +2,9 @@ package com.parallelbrains.baselayout.controller;
 
 import java.util.List;
 
-import com.parallelbrains.baselayout.dao.PersonDao;
+import com.parallelbrains.baselayout.repository.PersonDao;
 import com.parallelbrains.baselayout.model.Person;
+import com.parallelbrains.baselayout.service.PersonManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class PersonController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
-    private PersonDao personDao;
+    private PersonManager personManager;
 
     @RequestMapping(method = RequestMethod.GET, value = "edit")
     public ModelAndView editPerson(@RequestParam(value = "id", required = false) Long id) {
@@ -34,7 +35,7 @@ public class PersonController {
         if (id == null) {
             person = new Person();
         } else {
-            person = personDao.find(id);
+            person = personManager.get(id);
         }
 
         mav.addObject("person", person);
@@ -46,7 +47,7 @@ public class PersonController {
     public String savePerson(@ModelAttribute Person person) {
         LOGGER.debug("Received postback on person " + person);
 
-        personDao.save(person);
+        personManager.save(person);
 
         return "redirect:list";
 
@@ -57,7 +58,7 @@ public class PersonController {
         LOGGER.debug("Received request to list persons");
 
         ModelAndView mav = new ModelAndView();
-        List<Person> people = personDao.getPeople();
+        List<Person> people = personManager.getAll();
 
         LOGGER.debug("Person Listing count = " + people.size());
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Hello world! - 
+	ParallelBrains base project
 </h1>
 ${controllerMessage}<br/>
 <br/>
