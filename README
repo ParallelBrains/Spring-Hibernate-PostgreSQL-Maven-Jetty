@@ -1,14 +1,55 @@
+# A Java/Spring template project ready to be deployed to Heroku
 
-Working Heroku Java/J2EE App
-============================
+Built on frameworks including:
+Spring MVC 
+Hibernate 
+PostgreSQL
+Maven
+Jetty
 
-Basic integration between several frameworks, including:
-Spring MVC 3.1
-Hibernate ORM 3.6 
-PostgreSQL 8.3
-Maven 3
-Jetty 7.4.5
-Heroku Cedar
+and
 
-HOW TO USE? 
-http://javaonheroku.wordpress.com/2012/07/08/spring-mvc-with-hibernate-orm-on-heroku/
+(FE frameworks here)
+
+## Setting up locally
+
+* Clone the project
+```sh
+git clone https://github.com/denizozger/Spring-Hibernate-PostgreSQL-Maven-Jetty.git
+```
+* Download and install PostgreSQL
+
+* Download a client to connect to your local PostgreSQL server. A good one is http://www.pgadmin.org/
+
+* Create a database called "base"
+
+* Add DATABASE_URL as an environment variable. (If for some reason it doesn't work, try hardcoding it on root-context.xml)
+```sh
+export DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/base
+```
+
+* Go to project directory, run
+```sh
+mvn jetty:run
+```
+
+* Go to http://localhost:8080/baselayout
+
+## Deploying the build to Heroku
+
+* Create a Heroku account and download toolbelt
+
+*  Create an instance on Heroku
+```sh
+heroku create
+```
+
+* Push the code on Heroku
+```sh
+git push heroku master
+```
+
+* Open the app
+```sh
+heroku open
+```
