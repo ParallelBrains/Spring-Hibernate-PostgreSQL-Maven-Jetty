@@ -11,6 +11,14 @@ and
 
 (FE frameworks here)
 
+To-Do list:
+* Improve Spring security
+* Find the best profile/properties solution and apply
+* Add FE templates/frameworks
+* Exception handling (Spring) on controller level
+* Divide controllers to view and data packages
+* Enforce checkstyle
+
 ## Setting up locally
 
 * Clone the project
