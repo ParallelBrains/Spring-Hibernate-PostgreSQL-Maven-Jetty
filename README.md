@@ -12,6 +12,7 @@ and
 (FE frameworks here)
 
 To-Do list:
+* Get app running on localhost:8080 only instead of localhost:8080/baselayout
 * Improve Spring security
 * Find the best profile/properties solution and apply
 * Add FE templates/frameworks
