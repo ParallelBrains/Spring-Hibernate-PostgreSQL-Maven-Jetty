@@ -10,6 +10,8 @@
 </h1>
 ${controllerMessage}<br/>
 <br/>
+You should not be able to see person list without logging in. Try to login with username: guest, password: pass
+<br/>
 <br/>
 <a href="person/list">Go to the person list</a>
 </body>

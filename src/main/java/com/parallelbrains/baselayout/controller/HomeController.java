@@ -22,7 +22,7 @@ public class HomeController {
     @RequestMapping(value = RouteConfig.INDEX, method = RequestMethod.GET)
     public String home(Model model) {
 
-        model.addAttribute("controllerMessage", "Please sign-up or register.");
+        model.addAttribute("controllerMessage", "This project is under development");
 
         return "home";
     }
