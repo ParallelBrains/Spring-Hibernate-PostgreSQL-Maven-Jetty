@@ -19,6 +19,7 @@ To-Do list:
 * Exception handling (Spring) on controller level
 * Divide controllers to view and data packages
 * Enforce checkstyle
+* Caching (Redis?)
 
 ## Setting up locally
 
