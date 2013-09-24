@@ -11,13 +11,16 @@ and
 
 (FE frameworks here)
 
-To-Do list:
+Issues:
 * Get app running on localhost:8080 only instead of localhost:8080/baselayout
-* Improve Spring security
+* Reflect changes on the main application to tests
+
+Improvements:
+* Divide controllers to view and data packages
 * Find the best profile/properties solution and apply
+* Improve Spring security
 * Add FE templates/frameworks
 * Exception handling (Spring) on controller level
-* Divide controllers to view and data packages
 * Enforce checkstyle
 * Caching (Redis?)
 
