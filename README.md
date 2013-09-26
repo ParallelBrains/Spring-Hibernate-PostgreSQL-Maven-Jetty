@@ -1,4 +1,4 @@
-# A Java/Spring template project ready to be deployed to Heroku
+# A Java/Spring template project ready to be deployed to Heroku [ ![Codeship Status for denizozger/Spring-Hibernate-PostgreSQL-Maven-Jetty](https://www.codeship.io/projects/5419d2c0-0766-0131-b9ac-5a35253ed5eb/status?branch=master)](https://www.codeship.io/projects/7320)
 
 Built on frameworks including:
 * Spring MVC 
