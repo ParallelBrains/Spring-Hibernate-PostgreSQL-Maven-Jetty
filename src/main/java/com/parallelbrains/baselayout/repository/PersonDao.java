@@ -1,13 +1,8 @@
 package com.parallelbrains.baselayout.repository;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import com.parallelbrains.baselayout.model.Person;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface PersonDao {
 	
@@ -16,5 +11,7 @@ public interface PersonDao {
 	List<Person> getAll();
 	
     void save(Person person);
+
+    void delete(Long id);
 
 }

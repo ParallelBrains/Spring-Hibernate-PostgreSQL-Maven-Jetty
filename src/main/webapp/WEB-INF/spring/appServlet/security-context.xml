@@ -10,10 +10,11 @@
     <!--<http pattern="/css/**" security="none"/>-->
 
     <http auto-config='true'>
-        <!--<intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>-->
         <intercept-url pattern="/person/**" access="ROLE_USER" />
 
-        <!--<form-login login-page='/login.htm' default-target-url='/home.htm'-->
+        <!-- To implement a custom authentication, uncomment below -->
+        <!--<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>-->
+        <!--<form-login login-page='/login' default-target-url='/'-->
                     <!--always-use-default-target='true' />-->
     </http>
 

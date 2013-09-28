@@ -12,7 +12,7 @@ import java.util.Date;
  * todo set deleted,created and updated nullable=false
  */
 @MappedSuperclass
-public class BaseModel implements Serializable, Comparable<BaseModel> {
+public abstract class BaseModel implements Serializable, Comparable<BaseModel> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class BaseModel implements Serializable, Comparable<BaseModel> {
     @Column
     private Date updated;
 
-    protected BaseModel() {
+    public BaseModel() {
         this.created = new Date();
     }
 

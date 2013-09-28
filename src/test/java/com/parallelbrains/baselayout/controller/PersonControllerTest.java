@@ -1,12 +1,6 @@
 package com.parallelbrains.baselayout.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
+import com.parallelbrains.baselayout.controller.view.PersonController;
 import com.parallelbrains.baselayout.model.Person;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 @ContextConfiguration("/test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -38,7 +36,6 @@ public class PersonControllerTest {
 		ModelAndView mav = personController.listPeople();
 		assertEquals("list",mav.getViewName());
 		
-		@SuppressWarnings("unchecked")
 		List<Person> people = (List<Person>) mav.getModelMap().get("people");
 		assertNotNull(people);		
 		assertEquals(DataInitializer.PERSON_COUNT,people.size());		

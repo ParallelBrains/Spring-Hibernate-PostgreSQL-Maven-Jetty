@@ -12,4 +12,6 @@ public interface PersonManager {
 
     void save(Person person);
 
+    void delete(Long id);
+
 }

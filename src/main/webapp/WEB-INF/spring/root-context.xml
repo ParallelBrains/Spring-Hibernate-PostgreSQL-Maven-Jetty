@@ -3,15 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean class="java.net.URI" id="dbUrl">
+    <!-- Root Context: defines shared resources visible to all other web components -->
+
+    <bean class="java.net.URI" id="dbUrl">
     	<constructor-arg value="${DATABASE_URL}"/>
-	</bean>
-	
-	<import resource="db.xml" />
+    </bean>
 
-    <!-- todo maybe move to resources folder and address with classpath:blah?-->
+    <import resource="db.xml" />
 
-    <import resource="app/security-context.xml" />
-	
+    <!-- todo maybe move to resources folder and address with classpath:blah?. or, maybe not..-->
+    <import resource="appServlet/security-context.xml" />
+
 </beans>

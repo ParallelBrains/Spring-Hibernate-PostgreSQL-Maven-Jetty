@@ -1,1 +1,11 @@
-target
+target/
+out/
+
+src/main/webapp/WEB-INF/classes
+src/main/webapp/WEB-INF/lib
+
+*.iml
+*.ipr
+*.iws
+*.idea
+*.idea/*

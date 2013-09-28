@@ -32,4 +32,8 @@ public class PersonManagerImpl implements PersonManager {
     public void save(Person person) {
         personDao.save(person);
     }
+
+    public void delete(Long id) {
+        personDao.delete(id);
+    }
 }

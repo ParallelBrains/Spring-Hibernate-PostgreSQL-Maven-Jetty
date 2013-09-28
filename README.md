@@ -1,29 +1,43 @@
 # A Java/Spring template project ready to be deployed to Heroku
 
-Built on frameworks including:
+Built on Back-end frameworks including:
 * Spring MVC 
 * Hibernate 
 * PostgreSQL
 * Maven
 * Jetty
 
-and
+and Front-end frameworks including:
 
 (FE frameworks here)
 
-To-Do list:
-* Improve Spring security
+High priority To-Do list:
+* Get the tests running
+* User login based on database
+* User registration
+* Spring social
+* Set default ordering of lists
 * Find the best profile/properties solution and apply
 * Add FE templates/frameworks
-* Exception handling (Spring) on controller level
-* Divide controllers to view and data packages
+* Proper .gitignore
+* Forgotten password
+
+Less priorities:
+* Document upload/download with Amazon S3
+* Error page (with Spring)
 * Enforce checkstyle
+* Logging database
+* Paging
+* (Spring) validation
+
+Contributions are much appreciated! If you want to implement a new feature, please create a new branch off master called
+ feature/your-feature-name and submit a pull request to master when your implementation is done.
 
 ## Setting up locally
 
 * Clone the project
 ```sh
-git clone https://github.com/denizozger/Spring-Hibernate-PostgreSQL-Maven-Jetty.git
+git clone https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty.git
 ```
 * Download and install PostgreSQL
 

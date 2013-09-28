@@ -1,8 +1,9 @@
-package com.parallelbrains.baselayout.controller;
+package com.parallelbrains.baselayout.controller.view;
 
 import com.parallelbrains.baselayout.config.RouteConfig;
 import com.parallelbrains.baselayout.model.Person;
 import com.parallelbrains.baselayout.service.PersonManager;
+import com.parallelbrains.baselayout.service.UserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +18,28 @@ import java.util.List;
 
 @Controller
 @RequestMapping(RouteConfig.PERSON_BASE_MAPPING)
-public class PersonController {
+public class PersonController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
     private PersonManager personManager;
 
+    @Autowired
+    private UserManager userManager;
+
     @RequestMapping(value = RouteConfig.PERSON_EDIT, method = RequestMethod.GET)
     public ModelAndView editPerson(@RequestParam(value = "id", required = false) Long id) {
         LOGGER.debug("Received request to edit person id : " + id);
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("edit");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(RouteConfig.PERSON_EDIT_VIEW);
 
-        Person person = null;
-        if (id == null) {
-            person = new Person();
-        } else {
-            person = personManager.get(id);
-        }
+        Person person = personManager.get(id);
 
-        mav.addObject("person", person);
+        modelAndView.addObject("person", person == null ? new Person() : person);
 
-        return mav;
+        return modelAndView;
     }
 
     @RequestMapping(value = RouteConfig.PERSON_EDIT, method = RequestMethod.POST)
@@ -49,7 +48,7 @@ public class PersonController {
 
         personManager.save(person);
 
-        return "redirect:list";
+        return redirectTo(RouteConfig.PERSON_LIST);
 
     }
 
@@ -57,15 +56,29 @@ public class PersonController {
     public ModelAndView listPeople() {
         LOGGER.debug("Received request to list persons");
 
-        ModelAndView mav = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
+
         List<Person> people = personManager.getAll();
 
         LOGGER.debug("Person Listing count = " + people.size());
 
-        mav.addObject("people", people);
-        mav.setViewName("list");
+        modelAndView.addObject("people", people);
+        modelAndView.setViewName(RouteConfig.PERSON_LIST_VIEW);
 
-        return mav;
+        modelAndView.addObject("loggedInUserName", userManager.getLoggedInUser().getUsername());
+
+        userManager.getLoggedInUser();
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = RouteConfig.PERSON_DELETE, method = RequestMethod.DELETE)
+    public String deletePerson(@ModelAttribute Person person) {
+        LOGGER.debug("Deleting person " + person);
+
+        personManager.delete(person.getId());
+
+        return redirectTo(RouteConfig.PERSON_LIST);
     }
 
 }
