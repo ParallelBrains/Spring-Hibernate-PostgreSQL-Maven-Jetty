@@ -29,6 +29,7 @@ Less priorities:
 * Logging database
 * Paging
 * (Spring) validation
+* Caching (EHCache?)
 
 Contributions are much appreciated! If you want to implement a new feature, please create a new branch off master called
  feature/your-feature-name and submit a pull request to master when your implementation is done.
