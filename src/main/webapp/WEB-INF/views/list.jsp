@@ -18,7 +18,7 @@ You are logged in as ${loggedInUserName}
 <a href="edit"> Add Person</a>
 <br/>
 <!-- todo we should get app running on localhost:8080 only instead of localhost:8080/baselayout for these links to work -->
-<a href="/baselayout/">Go to homepage</a>
+<a href="/">Go to homepage</a>
 <br/>
 <a href="/baselayout/j_spring_security_logout">Logout</a>
 </body>
