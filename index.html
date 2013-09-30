@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ParallelBrains Baselayout by ParallelBrains</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ParallelBrains Baselayout</h1>
+        <p>A Java/Spring template project ready to be deployed to Heroku</p>
+
+        <p class="view"><a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty">View the Project on GitHub <small>ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="a-javaspring-template-project-ready-to-be-deployed-to-heroku--" class="anchor" href="#a-javaspring-template-project-ready-to-be-deployed-to-heroku--"><span class="octicon octicon-link"></span></a>A Java/Spring template project ready to be deployed to Heroku <a href="https://www.codeship.io/projects/7451"> <img src="https://www.codeship.io/projects/f951ab10-09ea-0131-64c8-7eb8e86f2980/status?branch=master" alt="Codeship Status for ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty"></a>
+</h1>
+
+<p>Built on Back-end frameworks including:</p>
+
+<ul>
+<li>Spring MVC </li>
+<li>Hibernate </li>
+<li>PostgreSQL</li>
+<li>Maven</li>
+<li>Jetty</li>
+</ul><p>We will soon add some Front-end frameworks including:</p>
+
+<ul>
+<li>Backbone.js</li>
+<li>Require.js</li>
+<li>Mustache.js</li>
+<li>Core Twitter Bootstrap</li>
+</ul><p>Please see the current development status of the project here: <a href="https://trello.com/b/Mo2khGgC/baselayout">https://trello.com/b/Mo2khGgC/baselayout</a></p>
+
+<p>Contributions are much appreciated! If you want to implement a new feature, please create a new branch off master called
+ feature/your-feature-name and submit a pull request to master when your implementation is done.</p>
+
+<h2>
+<a name="setting-up-locally" class="anchor" href="#setting-up-locally"><span class="octicon octicon-link"></span></a>Setting up locally</h2>
+
+<ul>
+<li>Clone the project
+<code>sh
+git clone https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty.git
+</code>
+</li>
+<li><p>Download and install PostgreSQL</p></li>
+<li><p>Download a client to connect to your local PostgreSQL server. A good one is <a href="http://www.pgadmin.org/">http://www.pgadmin.org/</a></p></li>
+<li><p>Create a database called "base"</p></li>
+<li>
+<p>Add DATABASE_URL as an environment variable. (If for some reason it doesn't work, try hardcoding it on root-context.xml)</p>
+
+<div class="highlight highlight-sh"><pre><span class="nb">export </span><span class="nv">DATABASE_URL</span><span class="o">=</span>postgres://USERNAME:PASSWORD@localhost:5432/base
+</pre></div>
+</li>
+<li>
+<p>Go to project directory, run</p>
+
+<div class="highlight highlight-sh"><pre>mvn jetty:run
+</pre></div>
+</li>
+<li><p>Go to http://localhost:8080/baselayout</p></li>
+</ul><h2>
+<a name="deploying-the-build-to-heroku" class="anchor" href="#deploying-the-build-to-heroku"><span class="octicon octicon-link"></span></a>Deploying the build to Heroku</h2>
+
+<ul>
+<li><p>Create a Heroku account and download toolbelt</p></li>
+<li>
+<p>Create an instance on Heroku</p>
+
+<div class="highlight highlight-sh"><pre>heroku create
+</pre></div>
+</li>
+<li>
+<p>Push the code on Heroku</p>
+
+<div class="highlight highlight-sh"><pre>git push heroku master
+</pre></div>
+</li>
+<li>
+<p>Open the app</p>
+
+<div class="highlight highlight-sh"><pre>heroku open
+</pre></div>
+</li>
+</ul><h2>
+<a name="useful-links" class="anchor" href="#useful-links"><span class="octicon octicon-link"></span></a>Useful links</h2>
+
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/getting-started-with-spring-mvc-hibernate">https://devcenter.heroku.com/articles/getting-started-with-spring-mvc-hibernate</a></li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ParallelBrains">ParallelBrains</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
