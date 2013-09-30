@@ -16,6 +16,9 @@ We will soon add some Front-end frameworks including:
 
 Please see the current development status of the project here: https://trello.com/b/Mo2khGgC/baselayout
 
+You can find the API documentation here: http://docs.parallelbrainsbaselayout.apiary.io/traffic
+A mock API operates at http://parallelbrainsbaselayout.apiary.io/ 
+
 Contributions are much appreciated! If you want to implement a new feature, please create a new branch off master called
  feature/your-feature-name and submit a pull request to master when your implementation is done.
 
