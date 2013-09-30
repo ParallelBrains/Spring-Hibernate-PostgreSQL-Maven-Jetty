@@ -1,36 +1,44 @@
-HOST: http://www.google.com/
+HOST: http://parallelbrains-baselayout.herokuapp.com/api
 
 --- ParallelBrains-baselayout ---
 
 ---
-Welcome to the our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)
+This project is under continous development. Currently no authorisation is required to use the API. Please find the source code at https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty
 ---
 
 --
-Shopping Cart Resources
-The following is a section of resources related to the shopping cart
+People Resources
+CRUD operations for people
 --
 
-List products added into your shopping-cart. (comment block again in Markdown)
-GET /shopping-cart
+List of people
+GET /people
 < 200
 < Content-Type: application/json
-{ "items": [
-{ "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
-] }
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"deniz","lastName":"ozger"}]
 
-Save new products in your shopping cart
-POST /shopping-cart
+Save new person
+POST /people
 > Content-Type: application/json
-{ "product":"1AB23ORM", "quantity": 2 }
+[{"id":,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"bilsay","lastName":"yildirim"}]
 < 201
 < Content-Type: application/json
-{ "status": "created", "url": "/shopping-cart/2" }
+[{"id":5,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"bilsay","lastName":"yildirim"}]
 
--- Payment Resources --
-
-This resource allows you to submit payment information to process your *shopping cart* items
-POST /payment
-{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
+Get a person
+GET /people/{id}
 < 200
-{ "receipt": "/payment/receipt/1" }
+< Content-Type: application/json
+{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"deniz","lastName":"ozger"}
+
+Update a person
+PUT /people/{id}
+> Content-Type: application/json
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"engin","lastName":"ozger"}]
+< 201
+< Content-Type: application/json
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"engin","lastName":"ozger"}]
+
+Delete a person
+DELETE /people/{id}
+< 201
