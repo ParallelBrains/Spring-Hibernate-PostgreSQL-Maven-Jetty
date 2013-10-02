@@ -1,0 +1,44 @@
+HOST: http://parallelbrains-baselayout.herokuapp.com/api
+
+--- ParallelBrains-baselayout ---
+
+---
+This project is under continous development. Currently no authorisation is required to use the API. Please find the source code at https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty
+---
+
+--
+People Resources
+CRUD operations for people
+--
+
+List of people
+GET /people
+< 200
+< Content-Type: application/json
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"deniz","lastName":"ozger"}]
+
+Save new person
+POST /people
+> Content-Type: application/json
+[{"id":,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"bilsay","lastName":"yildirim"}]
+< 201
+< Content-Type: application/json
+[{"id":5,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"bilsay","lastName":"yildirim"}]
+
+Get a person
+GET /people/{id}
+< 200
+< Content-Type: application/json
+{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"deniz","lastName":"ozger"}
+
+Update a person
+PUT /people/{id}
+> Content-Type: application/json
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"engin","lastName":"ozger"}]
+< 201
+< Content-Type: application/json
+[{"id":4,"deleted":false,"created":1380467171918,"updated":1380467171921,"firstName":"engin","lastName":"ozger"}]
+
+Delete a person
+DELETE /people/{id}
+< 201
