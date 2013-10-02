@@ -1,57 +1,46 @@
 package com.parallelbrains.baselayout.repository;
 
+import com.parallelbrains.baselayout.model.Person;
+import com.parallelbrains.baselayout.utils.DaoHelper;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-import com.parallelbrains.baselayout.controller.DataInitializer;
-import com.parallelbrains.baselayout.model.Person;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration("/test-context.xml")
-@RunWith(SpringJUnit4ClassRunner.class)
-@Transactional
-public class PersonDaoTest {
+public class PersonDaoTest extends BaseDaoTest {
+
+    @Autowired
+    private DaoHelper daoHelper;
 
 	@Autowired
 	private PersonDao personDao;
 
-	@Autowired
-	private DataInitializer dataInitializer;
+	@Test
+	public void saveAPerson() {
+        Person person = daoHelper.savePerson("Ayrton", "Senna");
 
-	@Before
-	public void prepareData() {
-		dataInitializer.initData();
+		assertNotNull(person.getId());
 	}
 
 	@Test
-	public void shouldSaveAPerson() {
-		Person p = new Person();
-		p.setFirstName("Andy");
-		p.setLastName("Gibson");
-		personDao.save(p);
-		Long id = p.getId();
-		Assert.assertNotNull(id);
+	public void getAPerson() {
+        Person person = daoHelper.savePerson("Ayrton", "Senna");
+
+        Person savedPerson = personDao.get(person.getId());
+
+        assertNotNull(savedPerson);
 	}
 
-	@Test
-	public void shouldLoadAPerson() {
-		Long template = dataInitializer.people.get(0);
-		Person p = personDao.get(template);
+    @Test
+	public void listPeople() {
+        daoHelper.savePerson("Ayrton", "Senna");
 
-		Assert.assertNotNull("Person not found!", p);
-		Assert.assertEquals(template, p.getId());
-	}
-
-	public void shouldListPeople() {
 		List<Person> people = personDao.getAll();
 
-		Assert.assertEquals(DataInitializer.PERSON_COUNT, people.size());
+		assertEquals(1, people.size());
 	}
 
 }
