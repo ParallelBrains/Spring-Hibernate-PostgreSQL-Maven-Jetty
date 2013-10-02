@@ -1,7 +1,6 @@
 package com.parallelbrains.baselayout.repository;
 
 import com.parallelbrains.baselayout.model.Person;
-import com.parallelbrains.baselayout.utils.DaoHelper;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,9 +10,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class PersonDaoTest extends BaseDaoTest {
-
-    @Autowired
-    private DaoHelper daoHelper;
 
 	@Autowired
 	private PersonDao personDao;
