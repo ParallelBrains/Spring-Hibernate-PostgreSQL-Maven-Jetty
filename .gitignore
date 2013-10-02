@@ -9,3 +9,16 @@ src/main/webapp/WEB-INF/lib
 *.iws
 *.idea
 *.idea/*
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
