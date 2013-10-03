@@ -27,6 +27,10 @@ public class UserManagerImpl implements UserManager {
         return userDao.get(id);
     }
 
+    public User get(String username) {
+        return userDao.get(username);
+    }
+
     public List<User> getAll() {
         return userDao.getAll();
     }
