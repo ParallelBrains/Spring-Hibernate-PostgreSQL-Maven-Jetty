@@ -1,6 +1,7 @@
 package com.parallelbrains.baselayout.repository;
 
 import com.parallelbrains.baselayout.model.Person;
+import com.parallelbrains.baselayout.utils.TestUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,14 +17,18 @@ public class PersonDaoTest extends BaseDaoTest {
 
 	@Test
 	public void saveAPerson() {
-        Person person = daoHelper.savePerson("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+
+        personDao.save(person);
 
 		assertNotNull(person.getId());
 	}
 
 	@Test
 	public void getAPerson() {
-        Person person = daoHelper.savePerson("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+
+        personDao.save(person);
 
         Person savedPerson = personDao.get(person.getId());
 
@@ -32,7 +37,9 @@ public class PersonDaoTest extends BaseDaoTest {
 
     @Test
 	public void listPeople() {
-        daoHelper.savePerson("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+
+        personDao.save(person);
 
 		List<Person> people = personDao.getAll();
 
