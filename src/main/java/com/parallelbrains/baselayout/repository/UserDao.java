@@ -1,10 +1,10 @@
-package com.parallelbrains.baselayout.service;
+package com.parallelbrains.baselayout.repository;
 
 import com.parallelbrains.baselayout.model.User;
 
 import java.util.List;
 
-public interface UserManager {
+public interface UserDao {
 
     User get(Long id) ;
 
@@ -13,7 +13,5 @@ public interface UserManager {
     void save(User user);
 
     void delete(Long id);
-
-    org.springframework.security.core.userdetails.User getLoggedInUser();
 
 }

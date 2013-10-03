@@ -1,17 +1,10 @@
 package com.parallelbrains.baselayout.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Person extends BaseModel {
-
-	private static final long serialVersionUID = -1308795024262635690L;
 
 	@Column
 	private String firstName;
