@@ -22,11 +22,19 @@ public abstract class BaseDao<T extends BaseModel> {
     private EntityManager entityManager;
 
     public T get(final Long id) {
+        return get(id, false);
+    }
+
+    private T get(final Long id, boolean includeDeleted) {
         if (id != null) {
-            return entityManager.find(clazz, id);
-        } else {
-            return null;
+            T object =  entityManager.find(clazz, id);
+
+            if (includeDeleted || (object != null && !object.isDeleted())) {
+                return object;
+            }
         }
+
+        return null;
     }
 
     public List<T> getAll() {

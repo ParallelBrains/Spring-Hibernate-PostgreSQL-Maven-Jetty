@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class PersonManagerTest extends BaseManagerTest {
 
@@ -44,6 +43,23 @@ public class PersonManagerTest extends BaseManagerTest {
         List<Person> people = personManager.getAll();
 
         assertEquals(1, people.size());
+    }
+
+    @Test
+    public void deleteAPerson() {
+        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+
+        personManager.save(person);
+
+        Long personId = person.getId();
+
+        assertNotNull(personId);
+
+        personManager.delete(personId);
+
+        Person deletedPerson = personManager.get(personId);
+
+        assertNull(deletedPerson);
     }
 
 }

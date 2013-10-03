@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class PersonDaoTest extends BaseDaoTest {
 
@@ -45,5 +44,22 @@ public class PersonDaoTest extends BaseDaoTest {
 
 		assertEquals(1, people.size());
 	}
+
+    @Test
+    public void deleteAPerson() {
+        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+
+        personDao.save(person);
+
+        Long personId = person.getId();
+
+        assertNotNull(personId);
+
+        personDao.delete(personId);
+
+        Person deletedPerson = personDao.get(personId);
+
+        assertNull(deletedPerson);
+    }
 
 }
