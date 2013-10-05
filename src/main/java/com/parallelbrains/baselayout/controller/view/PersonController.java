@@ -65,7 +65,11 @@ public class PersonController extends BaseController {
         modelAndView.addObject("people", people);
         modelAndView.setViewName(RouteConfig.PERSON_LIST_VIEW);
 
-        modelAndView.addObject("loggedInUserName", userManager.getLoggedInUser().getUsername());
+        org.springframework.security.core.userdetails.User loggedInUser = userManager.getLoggedInUser();
+
+        if (loggedInUser != null) {
+            modelAndView.addObject("loggedInUserName", userManager.getLoggedInUser().getUsername());
+        }
 
         userManager.getLoggedInUser();
 

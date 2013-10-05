@@ -1,22 +1,12 @@
 package com.parallelbrains.baselayout.controller.view;
 
 import com.parallelbrains.baselayout.config.RouteConfig;
-import com.parallelbrains.baselayout.model.User;
-import com.parallelbrains.baselayout.security.UserAuthenticationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController extends BaseController {
@@ -32,25 +22,25 @@ public class LoginController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = RouteConfig.LOGIN, method = RequestMethod.POST)
-    public String loginUser(@ModelAttribute User user,
-                            HttpServletRequest request) {
-
-        AuthenticationManager am = new UserAuthenticationManager();
-
-        try {
-            Authentication authRequest = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-            Authentication result = am.authenticate(authRequest);
-            SecurityContextHolder.getContext().setAuthentication(result);
-        } catch(AuthenticationException e) {
-            LOGGER.error("Authentication failed: " + e.getMessage());
-
-            return redirectTo("/fail");
-        }
-
-        String referer = request.getHeader("Referer");
-
-        return "redirect:"+ referer;
-    }
+//    @RequestMapping(value = RouteConfig.LOGIN, method = RequestMethod.POST)
+//    public String loginUser(@ModelAttribute User user,
+//                            HttpServletRequest request) {
+//
+//        AuthenticationManager am = new UserAuthenticationManager();
+//
+//        try {
+//            Authentication authRequest = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+//            Authentication result = am.authenticate(authRequest);
+//            SecurityContextHolder.getContext().setAuthentication(result);
+//        } catch(AuthenticationException e) {
+//            LOGGER.error("Authentication failed: " + e.getMessage());
+//
+//            return redirectTo("/fail");
+//        }
+//
+//        String referer = request.getHeader("Referer");
+//
+//        return "redirect:"+ referer;
+//    }
 
 }

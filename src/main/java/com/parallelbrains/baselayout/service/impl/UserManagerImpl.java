@@ -46,7 +46,8 @@ public class UserManagerImpl implements UserManager {
     public org.springframework.security.core.userdetails.User getLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication != null) {
+        if (authentication != null &&
+                authentication.getPrincipal() instanceof org.springframework.security.core.userdetails.User) {
             return (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
         } else {
             return null;

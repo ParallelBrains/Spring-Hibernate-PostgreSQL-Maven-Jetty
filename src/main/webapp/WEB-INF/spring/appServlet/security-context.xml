@@ -41,4 +41,8 @@
 
     <beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
+    <!-- Enable  enable support for Spring Security's @Secured -->
+    <global-method-security secured-annotations="enabled"/>
+
+
 </beans:beans>
