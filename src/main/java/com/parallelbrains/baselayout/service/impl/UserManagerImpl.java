@@ -36,6 +36,8 @@ public class UserManagerImpl implements UserManager {
     }
 
     public void save(User user) {
+        // todo use the encode method on the PasswordEncoder for storing new users' passwords
+
         userDao.save(user);
     }
 
