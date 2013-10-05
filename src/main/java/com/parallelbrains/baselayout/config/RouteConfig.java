@@ -41,6 +41,8 @@ public class RouteConfig {
     public static final String PERSON_LIST_VIEW = "list";
 
     // API Mappings
-    public static final String PERSON_API_LIST_PEOPLE_URL = "/api/people"; // GET, POST
-    public static final String PERSON_API_SINGLE_PERSON_URL = "/api/people/{id}"; // GET, PUT, DELETE
+    public static final String BASE_API_URL = "/api";
+
+    public static final String PERSON_API_LIST_PEOPLE_URL = "/people"; // GET, POST
+    public static final String PERSON_API_SINGLE_PERSON_URL = "/people/{id}"; // GET, PUT, DELETE
 }

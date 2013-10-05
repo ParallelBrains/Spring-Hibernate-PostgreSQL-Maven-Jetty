@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = RouteConfig.BASE_API_URL)
 public class PersonAPIController extends BaseAPIController {
 
     @Autowired
