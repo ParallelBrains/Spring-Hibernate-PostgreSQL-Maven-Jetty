@@ -12,13 +12,22 @@
     <http pattern="/login*" security="none"/>
 
     <http auto-config='true'>
-        <intercept-url pattern="/person/**" access="ROLE_USER" />
+        <!-- Intercept-URLs will be evaluated in the order listed and the first match will be used. So you must put the most specific matches at the top. -->
+        <intercept-url pattern="/person/**" access="ROLE_USER"/>
+
+        <logout/>
+
+        <form-login authentication-success-handler-ref="authenticationSuccessHandler"
+                    authentication-failure-handler-ref="authenticationFailureHandler"/>
 
         <!--<form-login login-page='/login' default-target-url='/'-->
-                    <!--always-use-default-target='true' />-->
+        <!--always-use-default-target='true' />-->
     </http>
 
-    <!--<beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>-->
+    <beans:bean id="authenticationSuccessHandler"
+                class="com.parallelbrains.baselayout.security.AuthenticationSuccessHandler"/>
+    <beans:bean id="authenticationFailureHandler"
+                class="com.parallelbrains.baselayout.security.AuthenticationFailureHandler"/>
 
     <context:component-scan base-package="com.parallelbrains.baselayout.repository"/>
     <context:component-scan base-package="com.parallelbrains.baselayout.service"/>
@@ -30,6 +39,6 @@
         </authentication-provider>
     </authentication-manager>
 
-
+    <beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 </beans:beans>

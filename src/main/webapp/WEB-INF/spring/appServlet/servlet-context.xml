@@ -13,14 +13,17 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-    <context:component-scan base-package="com.parallelbrains.baselayout" />
-
+    <!-- Tells Spring not to expect components to be configured in XML -->
     <tx:annotation-driven />
+
+    <!-- Lets Spring know where to find components (via annotations) -->
+    <context:component-scan base-package="com.parallelbrains.baselayout" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+    <!-- We need this bean as our Controllers just return the name of the view, instead of ModelAndView objects -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
