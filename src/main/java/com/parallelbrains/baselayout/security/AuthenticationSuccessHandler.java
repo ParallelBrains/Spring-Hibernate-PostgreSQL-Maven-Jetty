@@ -27,7 +27,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 
         SavedRequest savedRequest = new HttpSessionRequestCache().getRequest(request, response);
 
-        response.sendRedirect(savedRequest.getRedirectUrl());
+        response.sendRedirect(savedRequest != null ? savedRequest.getRedirectUrl() : "/");
     }
 
 }

@@ -17,11 +17,13 @@
 
         <logout/>
 
-        <form-login authentication-success-handler-ref="authenticationSuccessHandler"
+        <form-login login-page='/login'
+                    login-processing-url="/process-login"
+                    username-parameter="username"
+                    password-parameter="password"
+                    default-target-url="/"
+                    authentication-success-handler-ref="authenticationSuccessHandler"
                     authentication-failure-handler-ref="authenticationFailureHandler"/>
-
-        <!--<form-login login-page='/login' default-target-url='/'-->
-        <!--always-use-default-target='true' />-->
     </http>
 
     <beans:bean id="authenticationSuccessHandler"
@@ -43,6 +45,5 @@
 
     <!-- Enable  enable support for Spring Security's @Secured -->
     <global-method-security secured-annotations="enabled"/>
-
 
 </beans:beans>

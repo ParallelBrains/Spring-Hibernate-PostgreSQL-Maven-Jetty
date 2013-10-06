@@ -22,25 +22,14 @@ public class LoginController extends BaseController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = RouteConfig.LOGIN, method = RequestMethod.POST)
-//    public String loginUser(@ModelAttribute User user,
-//                            HttpServletRequest request) {
-//
-//        AuthenticationManager am = new UserAuthenticationManager();
-//
-//        try {
-//            Authentication authRequest = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-//            Authentication result = am.authenticate(authRequest);
-//            SecurityContextHolder.getContext().setAuthentication(result);
-//        } catch(AuthenticationException e) {
-//            LOGGER.error("Authentication failed: " + e.getMessage());
-//
-//            return redirectTo("/fail");
-//        }
-//
-//        String referer = request.getHeader("Referer");
-//
-//        return "redirect:"+ referer;
-//    }
+    @RequestMapping(value = RouteConfig.LOGIN_FAILED, method = RequestMethod.GET)
+    public ModelAndView loginFailedPage() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("message", "Login failed, please try again.");
+        modelAndView.setViewName(RouteConfig.LOGIN_VIEW);
+
+        return modelAndView;
+    }
 
 }

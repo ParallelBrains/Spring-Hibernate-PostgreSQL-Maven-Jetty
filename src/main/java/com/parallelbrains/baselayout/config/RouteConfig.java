@@ -21,6 +21,7 @@ public class RouteConfig {
      */
     // Mappings
     public static final String LOGIN = "/login";
+    public static final String LOGIN_FAILED = "/login-failed";
 
     // Views
     public static final String LOGIN_VIEW = "login";

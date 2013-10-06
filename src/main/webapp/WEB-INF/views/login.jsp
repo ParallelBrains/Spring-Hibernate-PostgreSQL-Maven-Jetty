@@ -3,7 +3,9 @@
 <body onload='document.f.j_username.focus();'>
 <h3>Login with Username and Password</h3>
 
-<form name='f' action='/baselayout/login' method='POST'>
+<form name='f' action='process-login' method='POST'>
+    ${message}<br/>
+    <br/>
     <table>
         <tr>
             <td>User:</td>
