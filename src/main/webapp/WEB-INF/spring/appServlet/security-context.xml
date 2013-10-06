@@ -43,7 +43,12 @@
 
     <beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
-    <!-- Enable  enable support for Spring Security's @Secured -->
-    <global-method-security secured-annotations="enabled"/>
+    <!-- Enable support for Spring Security's @Secured -->
+    <!-- Enable support for Spring Security's @PreAuthorize, @PreFilter, @PostAuthorize and @PostFilter -->
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+
+
+    <!-- Uncomment this to see debugging information to monitor requests coming into the security filters -->
+    <!--<debug/>-->
 
 </beans:beans>
