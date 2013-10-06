@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * todo find a way to test API endpoints
+ */
 @Controller
 @RequestMapping(value = RouteConfig.BASE_API_URL)
 public class PersonAPIController extends BaseAPIController {
@@ -25,7 +28,7 @@ public class PersonAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.PERSON_API_LIST_PEOPLE_URL,
             method = RequestMethod.GET,
             produces = "application/json")
-    public List<Person> getPersons(HttpServletResponse response) throws Exception {
+    public List<Person> getPersons() throws Exception {
         return personManager.getAll();
     }
 
@@ -33,7 +36,7 @@ public class PersonAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.PERSON_API_SINGLE_PERSON_URL,
             method = RequestMethod.GET,
             produces = "application/json")
-    public Person getPerson(@PathVariable Long id, HttpServletResponse response) throws Exception {
+    public Person getPerson(@PathVariable Long id) throws Exception {
         return personManager.get(id);
     }
 
@@ -41,7 +44,7 @@ public class PersonAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.PERSON_API_SINGLE_PERSON_URL,
             method = RequestMethod.PUT,
             produces = "application/json")
-    public Person updatePerson(@RequestBody Person personWithNewValues, HttpServletResponse response) throws Exception {
+    public Person updatePerson(@RequestBody Person personWithNewValues) throws Exception {
         if (true) {
             Person existingPerson = personManager.get(personWithNewValues.getId());
 

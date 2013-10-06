@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class LoginAPIController extends BaseAPIController {
 
@@ -23,8 +21,7 @@ public class LoginAPIController extends BaseAPIController {
 
     @RequestMapping(value = RouteConfig.LOGIN, method = RequestMethod.POST)
     public void loginUser(@RequestParam(value = "username", required = true) String username,
-                            @RequestParam(value = "password", required = true) String password,
-                            HttpServletRequest request) {
+                            @RequestParam(value = "password", required = true) String password) {
 
         AuthenticationManager authenticationManager = new AuthenticationManagerImpl();
 
