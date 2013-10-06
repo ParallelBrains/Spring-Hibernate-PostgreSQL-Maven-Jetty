@@ -9,6 +9,10 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
        default-autowire="byName">
 
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="${DATABASE_URL}"/>
+    </bean>
+
 	<!-- Scans within the base package of the application for @Components to configure as beans -->
 	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
 

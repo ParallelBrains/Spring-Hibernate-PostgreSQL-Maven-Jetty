@@ -5,10 +5,6 @@
 
     <!-- Root Context: defines shared resources visible to all other web components -->
 
-    <bean class="java.net.URI" id="dbUrl">
-    	<constructor-arg value="${DATABASE_URL}"/>
-    </bean>
-
     <import resource="db.xml" />
 
     <!-- todo maybe move to resources folder and address with classpath:blah?. or, maybe not..-->
