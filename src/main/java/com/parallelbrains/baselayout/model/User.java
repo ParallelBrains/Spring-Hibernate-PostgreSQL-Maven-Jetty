@@ -18,7 +18,7 @@ public class User extends BaseModel {
     @Column
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String email;
 
     public String getUsername() {

@@ -44,7 +44,7 @@ export DATABASE_URL=postgres://USERNAME:PASSWORD@localhost:5432/base
 mvn jetty:run
 ```
 
-* Go to http://localhost:8080/baselayout
+* Go to http://localhost:8080/
 
 ## Deploying the build to Heroku
 

@@ -25,7 +25,6 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
             LOGGER.debug("Login attempt failed for user {}", username);
         }
 
-        // todo remove the base project name when jetty runs the app without it
-        response.sendRedirect("/baselayout" + RouteConfig.LOGIN_FAILED);
+        response.sendRedirect(RouteConfig.LOGIN_FAILED);
     }
 }
