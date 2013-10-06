@@ -28,7 +28,7 @@ public class PersonAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.PERSON_API_LIST_PEOPLE_URL,
             method = RequestMethod.GET,
             produces = "application/json")
-    public List<Person> getPersons() throws Exception {
+    public List<Person> getPeople() throws Exception {
         return personManager.getAll();
     }
 
