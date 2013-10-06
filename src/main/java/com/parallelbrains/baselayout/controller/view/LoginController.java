@@ -26,7 +26,7 @@ public class LoginController extends BaseController {
     public ModelAndView loginFailedPage() {
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.addObject("message", "Login failed, please try again.");
+        modelAndView.addObject("errorMessage", "Login failed, please try again.");
         modelAndView.setViewName(RouteConfig.LOGIN_VIEW);
 
         return modelAndView;

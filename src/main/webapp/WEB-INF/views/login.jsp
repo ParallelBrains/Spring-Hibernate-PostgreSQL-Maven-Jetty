@@ -1,24 +1,49 @@
-<html>
-<head><title>Login Page</title></head>
-<body onload='document.f.j_username.focus();'>
-<h3>Login with Username and Password</h3>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<form name='f' action='process-login' method='POST'>
-    ${message}<br/>
-    <br/>
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password'/></td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Login"/></td>
-        </tr>
-    </table>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../resources/assets/img/favicon.ico">
+
+    <title>Login to Baselayout</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../resources/assets/css/dist/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../resources/assets/css/dist/signin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../../resources/assets/js/libs/html5shiv.js"></script>
+    <script src="../../resources/assets/js/libs/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+
+    <form name="f" action="process-login" method="POST" class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <c:if test="${fn:length(errorMessage) > 0}">
+            <div class="alert alert-danger"><strong>Oh snap!</strong> ${errorMessage}</div>
+        </c:if>
+        <input type="text" name="username" value="" class="form-control" placeholder="Email address" autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>
