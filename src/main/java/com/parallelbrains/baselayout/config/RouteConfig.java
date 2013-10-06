@@ -46,4 +46,7 @@ public class RouteConfig {
 
     public static final String PERSON_API_LIST_PEOPLE_URL = "/people"; // GET, POST
     public static final String PERSON_API_SINGLE_PERSON_URL = "/people/{id}"; // GET, PUT, DELETE
+
+    public static final String USER_API_LIST_PEOPLE_URL = "/users"; // GET, POST
+    public static final String USER_API_SINGLE_PERSON_URL = "/users/{id}"; // GET, PUT, DELETE
 }

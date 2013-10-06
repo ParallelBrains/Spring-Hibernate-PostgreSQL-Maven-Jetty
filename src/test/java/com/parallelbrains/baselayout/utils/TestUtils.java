@@ -5,18 +5,21 @@ import com.parallelbrains.baselayout.model.User;
 
 public class TestUtils {
 
-    public static Person getAPersonObject(String firstName, String lastName) {
+    public static Person getAPersonObject() {
         Person person = new Person();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
+        person.setFirstName("Ayrton");
+        person.setLastName("Senna");
 
         return person;
     }
 
-    public static User getAUserObject(String username, String password) {
+    public static User getAUserObject() {
         User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        user.setUsername("deniz@parallelbrains.com");
+        user.setEmail("deniz@parallelbrains.com");
+        user.setPassword("birdistheword");
+        user.setFirstName("Deniz");
+        user.setLastName("Ozger");
 
         return user;
     }

@@ -16,7 +16,7 @@ public class UserDaoTest extends BaseDaoTest {
 
     @Test
     public void saveAUser() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userDao.save(user);
 
@@ -25,7 +25,7 @@ public class UserDaoTest extends BaseDaoTest {
 
     @Test
     public void getAUserById() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userDao.save(user);
 
@@ -36,7 +36,7 @@ public class UserDaoTest extends BaseDaoTest {
 
     @Test
     public void getAUserByUsername() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userDao.save(user);
 
@@ -47,7 +47,7 @@ public class UserDaoTest extends BaseDaoTest {
 
     @Test
     public void listPeople() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userDao.save(user);
 
@@ -58,7 +58,7 @@ public class UserDaoTest extends BaseDaoTest {
 
     @Test
     public void deleteAUser() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userDao.save(user);
 

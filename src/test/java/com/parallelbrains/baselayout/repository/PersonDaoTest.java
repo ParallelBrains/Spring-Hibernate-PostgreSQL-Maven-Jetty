@@ -16,7 +16,7 @@ public class PersonDaoTest extends BaseDaoTest {
 
 	@Test
 	public void saveAPerson() {
-        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject();
 
         personDao.save(person);
 
@@ -25,7 +25,7 @@ public class PersonDaoTest extends BaseDaoTest {
 
 	@Test
 	public void getAPerson() {
-        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject();
 
         personDao.save(person);
 
@@ -36,7 +36,7 @@ public class PersonDaoTest extends BaseDaoTest {
 
     @Test
 	public void listPeople() {
-        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject();
 
         personDao.save(person);
 
@@ -47,7 +47,7 @@ public class PersonDaoTest extends BaseDaoTest {
 
     @Test
     public void deleteAPerson() {
-        Person person = TestUtils.getAPersonObject("Ayrton", "Senna");
+        Person person = TestUtils.getAPersonObject();
 
         personDao.save(person);
 

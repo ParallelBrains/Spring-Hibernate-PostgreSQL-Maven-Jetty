@@ -16,7 +16,7 @@ public class UserManagerTest extends BaseManagerTest {
 
     @Test
     public void saveAUser() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userManager.save(user);
 
@@ -25,7 +25,7 @@ public class UserManagerTest extends BaseManagerTest {
 
     @Test
     public void getAUser() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userManager.save(user);
 
@@ -36,7 +36,7 @@ public class UserManagerTest extends BaseManagerTest {
 
     @Test
     public void listPeople() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userManager.save(user);
 
@@ -47,7 +47,7 @@ public class UserManagerTest extends BaseManagerTest {
 
     @Test
     public void deleteAUser() {
-        User user = TestUtils.getAUserObject("deniz@parallelbrains.com", "birdistheword");
+        User user = TestUtils.getAUserObject();
 
         userManager.save(user);
 
