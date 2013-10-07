@@ -28,9 +28,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         User userInDatabase = userManager.get(username);
 
-        org.springframework.security.core.userdetails.User user =
-                new org.springframework.security.core.userdetails.User(userInDatabase.getUsername(),
-                        userInDatabase.getPassword(), roles);
+        org.springframework.security.core.userdetails.User user = null;
+        /**
+         * Allow the test account, else check if the user's entered password with the password in database
+         */
+        if (username.equalsIgnoreCase("guest")) {
+            user = new org.springframework.security.core.userdetails.User(userInDatabase.getUsername(),
+                    "pass", roles);
+        } else {
+            user = new org.springframework.security.core.userdetails.User(userInDatabase.getUsername(),
+                    userInDatabase.getPassword(), roles);
+        }
 
         return user;
     }
