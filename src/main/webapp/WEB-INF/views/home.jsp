@@ -64,43 +64,15 @@
     </div>
 </div>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1>Parallel Brains Base Project</h1>
-        <p>This is a template for a simple website. It has a secure area which requires logging in.</p>
-        <p>Please login with username "<strong>guest</strong>", and password "<strong>pass</strong>".</p>
-        <p>See the <a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty" target="_blank">GitHub repository</a> for more information.</p>
-        <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-</div>
+<div class="page"></div>
 
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-    </div>
-
     <hr>
-
     <footer>
         <p>&copy; Parallel Brains 2013</p>
     </footer>
 </div> <!-- /container -->
+
 
 
 <!-- Bootstrap core JavaScript
@@ -108,5 +80,172 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../../resources/assets/js/libs/jquery.js"></script>
 <script src="../../resources/assets/js/libs/bootstrap.min.js"></script>
+<script src="../../resources/assets/js/libs/json2.js"></script>
+<script src="../../resources/assets/js/libs/underscore.js"></script>
+<script src="../../resources/assets/js/libs/backbone.js"></script>
+
+
+<!-- TEMPLATES -->
+<script type="text/template" id="homepage">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Parallel Brains Base Project</h1>
+            <p>This is a template for a simple website. It has a secure area which requires logging in.</p>
+            <p>Please login with username "<strong>guest</strong>", and password "<strong>pass</strong>".</p>
+            <p>See the <a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty" target="_blank">GitHub repository</a> for more information.</p>
+            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-lg-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+</script>
+
+<script type="text/template" id="about">
+
+    <div class="container">
+
+        <h1>About Parallel Brains</h1>
+
+        <p>We love kittens.</p>
+
+        <div class="bs-example bs-example-images">
+            <img data-src="holder.js/140x140" src="http://placekitten.com/140/140" class="img-circle" alt="140x140" style="width: 140px; height: 140px;"></p>
+        </div>
+
+    </div>
+
+</script>
+
+<script type="text/template" id="contact">
+
+    <link href="../../resources/assets/css/dist/flexible-iframe.css" rel="stylesheet">
+
+    <div class="container">
+
+        <h1>Contact Us</h1>
+
+        <p>Let's have a beer.</p>
+
+    </div>
+
+</script>
+
+
+<!-- HELPERS -->
+
+<script>
+    function htmlEncode(value){
+        return $('<div/>').text(value).html();
+    }
+    $.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+</script>
+
+<!-- BACKBONE -->
+
+<script>
+
+    /**
+     * Views
+     */
+
+    var HomepageView = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var that = this;
+            var template = _.template($('#homepage').html(), {});
+            that.$el.html(template);
+        }
+    });
+
+    var homepageView = new HomepageView();
+
+
+    var AboutView = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var that = this;
+            var template = _.template($('#about').html(), {});
+            that.$el.html(template);
+        }
+    });
+
+    var aboutView = new AboutView();
+
+
+    var ContactView = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var that = this;
+            var template = _.template($('#contact').html(), {});
+            that.$el.html(template);
+        }
+    });
+
+    var contactView = new ContactView();
+
+
+    /**
+     * Router
+     */
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            "": "home",
+            "about": "about",
+            "contact": "contact"
+        }
+    });
+
+    var router = new Router;
+
+    router.on('route:home', function() {
+        homepageView.render();
+    })
+    router.on('route:about', function() {
+        aboutView.render();
+    })
+    router.on('route:contact', function() {
+        contactView.render();
+    })
+
+    Backbone.history.start();
+</script>
+
 </body>
 </html>
