@@ -7,12 +7,15 @@ Built on Back-end frameworks including:
 * Maven
 * Jetty
 
-We will soon add some Front-end frameworks including:
+Front-end frameworks including:
+
+* Twitter Bootstrap
+
+.. and soon:
 
 * Backbone.js
 * Require.js
 * Mustache.js
-* Core Twitter Bootstrap
 
 Please see the current development status of the project here: https://trello.com/b/Mo2khGgC/baselayout
 
