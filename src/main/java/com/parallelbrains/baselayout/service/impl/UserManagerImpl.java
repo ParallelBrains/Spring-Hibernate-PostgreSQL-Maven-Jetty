@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +23,13 @@ public class UserManagerImpl implements UserManager {
     @Autowired
     private UserDao userDao;
 
+    private PasswordEncoder passwordEncoder;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonManagerImpl.class);
+
+    public UserManagerImpl() {
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
 
     public User get(Long id) {
         return userDao.get(id);
@@ -36,7 +44,9 @@ public class UserManagerImpl implements UserManager {
     }
 
     public void save(User user) {
-        // todo use the encode method on the PasswordEncoder for storing new users' passwords
+        if (user.getId() == null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
 
         userDao.save(user);
     }

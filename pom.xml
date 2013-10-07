@@ -265,6 +265,14 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Apache utils -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>20030203.000129</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
