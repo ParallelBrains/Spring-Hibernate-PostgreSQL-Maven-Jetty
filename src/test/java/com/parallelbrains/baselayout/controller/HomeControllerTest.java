@@ -17,8 +17,5 @@ public class HomeControllerTest {
 		HomeController controller = new HomeController();
 		Model model = new ExtendedModelMap();
         assertEquals("home", controller.home(model));
-		
-		Object message = model.asMap().get("controllerMessage");
-        assertEquals("This project is under development", message);
 	}
 }
