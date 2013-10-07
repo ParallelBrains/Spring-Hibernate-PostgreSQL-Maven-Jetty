@@ -67,7 +67,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Parallel Brains Baselayout</h1>
+        <h1>Parallel Brains Base Project</h1>
         <p>This is a template for a simple website. It has a secure area which requires logging in.</p>
         <p>Please login with username "<strong>guest</strong>", and password "<strong>pass</strong>".</p>
         <p>See the <a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty" target="_blank">GitHub repository</a> for more information.</p>
