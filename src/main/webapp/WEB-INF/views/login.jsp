@@ -34,7 +34,7 @@
         <c:if test="${fn:length(errorMessage) > 0}">
             <div class="alert alert-danger"><strong>Oh snap!</strong> ${errorMessage}</div>
         </c:if>
-        <input type="text" name="username" value="" class="form-control" placeholder="Email address" autofocus>
+        <input type="text" name="username" value="" class="form-control" placeholder="Username" autofocus>
         <input type="password" name="password" class="form-control" placeholder="Password">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>

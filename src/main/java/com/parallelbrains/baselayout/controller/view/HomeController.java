@@ -21,9 +21,6 @@ public class HomeController {
      */
     @RequestMapping(value = RouteConfig.HOMEPAGE, method = RequestMethod.GET)
     public String home(Model model) {
-
-        model.addAttribute("controllerMessage", "This project is under development");
-
         return RouteConfig.HOMEPAGE_VIEW;
     }
 
