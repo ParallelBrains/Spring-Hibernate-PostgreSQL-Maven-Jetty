@@ -1,19 +1,19 @@
 # A Java/Spring template project ready to be deployed to Heroku [ ![Codeship Status for ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty](https://www.codeship.io/projects/f951ab10-09ea-0131-64c8-7eb8e86f2980/status?branch=master)](https://www.codeship.io/projects/7451)
 
 Built on Back-end frameworks including:
-* Spring MVC 
-* Hibernate 
+* Spring MVC (3.2.4.RELEASE)
+* Hibernate (4.2.5.Final)
 * PostgreSQL
 * Maven
-* Jetty
+* Jetty (6.1.25)
 
 Front-end frameworks including:
 
-* Twitter Bootstrap
+* Twitter Bootstrap (3.0.0) and jQuery (1.10.2)
+* Backbone.js (1.0.0) and Underscore.js (1.5.2)
 
-.. and soon:
+... and soon: 
 
-* Backbone.js
 * Require.js
 * Mustache.js
 
