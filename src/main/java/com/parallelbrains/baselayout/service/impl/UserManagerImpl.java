@@ -45,7 +45,8 @@ public class UserManagerImpl implements UserManager {
 
     public void save(User user) {
         if (user.getId() == null) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            // todo we might post encrypted passwords from BE
+//            user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 
         userDao.save(user);
