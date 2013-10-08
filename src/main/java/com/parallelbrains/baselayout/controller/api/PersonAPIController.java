@@ -45,22 +45,9 @@ public class PersonAPIController extends BaseAPIController {
             method = RequestMethod.PUT,
             produces = "application/json")
     public Person updatePerson(@RequestBody Person personWithNewValues) throws Exception {
-        if (true) {
-            Person existingPerson = personManager.get(personWithNewValues.getId());
+        personManager.save(personWithNewValues);
 
-            existingPerson.setFirstName(personWithNewValues.getFirstName());
-            existingPerson.setLastName(personWithNewValues.getLastName());
-
-            personManager.save(existingPerson);
-
-            return existingPerson;
-        } else {
-            // todo this looks better.. to be tested
-
-            personManager.save(personWithNewValues);
-
-            return personWithNewValues;
-        }
+        return personWithNewValues;
     }
 
     @ResponseBody
@@ -76,8 +63,11 @@ public class PersonAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.PERSON_API_SINGLE_PERSON_URL,
             method = RequestMethod.DELETE,
             produces = "application/json")
-    public void deletePerson(@PathVariable Long id, HttpServletResponse response) throws Exception {
+    public Person deletePerson(@PathVariable Long id, HttpServletResponse response) throws Exception {
         personManager.delete(id);
+
+        // todo to trigger success() function of backbone upon deletion i needed to return something..
+        return new Person();
     }
 
 }

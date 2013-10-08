@@ -39,7 +39,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#people">People</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
@@ -83,6 +83,15 @@
 <script src="../../resources/assets/js/libs/json2.js"></script>
 <script src="../../resources/assets/js/libs/underscore.js"></script>
 <script src="../../resources/assets/js/libs/backbone.js"></script>
+
+<!-- Change underscore's interperation symbols from \<\% to \<\@ http://stackoverflow.com/a/8467907/2498874 -->
+<script>
+    _.templateSettings = {
+        interpolate: /\<\@\=(.+?)\@\>/gim,
+        evaluate: /\<\@(.+?)\@\>/gim,
+        escape: /\<\@\-(.+?)\@\>/gim
+    };
+</script>
 
 
 <!-- TEMPLATES -->
@@ -140,8 +149,6 @@
 
 <script type="text/template" id="contact">
 
-    <link href="../../resources/assets/css/dist/flexible-iframe.css" rel="stylesheet">
-
     <div class="container">
 
         <h1>Contact Us</h1>
@@ -150,6 +157,72 @@
 
     </div>
 
+</script>
+
+<script type="text/template" id="person-list-template">
+
+    <div class="container">
+
+        <h1>People</h1>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <@ _.each(people, function(person) { @>
+                        <tr>
+                            <td><@= person.id @></td>
+                            <td><@= htmlEncode(person.get('firstName')) @></td>
+                            <td><@= htmlEncode(person.get('lastName')) @></td>
+                            <td><a href="#people/edit/<@= person.id @>" class="btn btn-info btn-xs">Edit</a></td>
+                        </tr>
+                    <@ }); @>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="#people/new" class="btn btn-primary">New person</a>
+
+    </div>
+
+</script>
+
+
+<script type="text/template" id="edit-person-template">
+    <div class="container">
+        <form class="edit-person-form">
+
+            <h1><@= person ? 'Edit' : 'New' @> Person</h1>
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input name="firstName" id="firstName" type="text" class="form-control" value="<@= person ? person.get('firstName') : '' @>">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input name="lastName" id="lastName" type="text" class="form-control" value="<@= person ? person.get('lastName') : '' @>">
+            </div>
+
+            <hr />
+
+            <button type="submit" class="btn btn-primary"><@= person ? 'Update' : 'Create' @></button>
+
+        </form>
+
+        <@ if(person) { @>
+            <br/>
+            <input type="hidden" name="id" value="<@= person.id @>" />
+            <button data-person-id="<@= person.id @>" class="btn btn-danger delete">Delete</button>
+        <@ }; @>
+    </div>
 </script>
 
 
@@ -220,6 +293,74 @@
     var contactView = new ContactView();
 
 
+    var People = Backbone.Collection.extend({
+        url: '/api/people'
+    });
+
+    var Person = Backbone.Model.extend({
+        urlRoot: '/api/people'
+    });
+
+    var PersonListView = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var that = this;
+            var people = new People();
+            people.fetch({
+                success: function (people) {
+                    var template = _.template($('#person-list-template').html(), {people: people.models});
+                    that.$el.html(template);
+                }
+            })
+        }
+    });
+
+    var personListView = new PersonListView();
+
+
+    var PersonEditView = Backbone.View.extend({
+        el: '.page',
+        events: {
+            'submit .edit-person-form': 'savePerson',
+            'click .delete': 'deletePerson'
+        },
+        savePerson: function (ev) {
+            var personDetails = $(ev.currentTarget).serializeObject();
+            var person = new Person();
+            person.save(personDetails, {
+                success: function (person) {
+                    router.navigate('people', {trigger:true});
+                }
+            });
+            return false;
+        },
+        deletePerson: function (ev) {
+            this.person.destroy({
+                success: function () {
+                    router.navigate('people', {trigger:true});
+                }
+            })
+        },
+        render: function (options) {
+            var that = this;
+            if(options.id) {
+                that.person = new Person({id: options.id});
+                that.person.fetch({
+                    success: function (person) {
+                        var template = _.template($('#edit-person-template').html(), {person: person});
+                        that.$el.html(template);
+                    }
+                })
+            } else {
+                var template = _.template($('#edit-person-template').html(), {person: null});
+                that.$el.html(template);
+            }
+        }
+    });
+
+    var personEditView = new PersonEditView();
+
+
     /**
      * Router
      */
@@ -227,6 +368,9 @@
     var Router = Backbone.Router.extend({
         routes: {
             "": "home",
+            "people": "people",
+            "people/edit/:id": "editPerson",
+            "people/new": "editPerson",
             "about": "about",
             "contact": "contact"
         }
@@ -236,6 +380,12 @@
 
     router.on('route:home', function() {
         homepageView.render();
+    })
+    router.on('route:people', function() {
+        personListView.render();
+    })
+    router.on('route:editPerson', function(id) {
+        personEditView.render({id: id});
     })
     router.on('route:about', function() {
         aboutView.render();

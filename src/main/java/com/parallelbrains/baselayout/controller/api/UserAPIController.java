@@ -38,22 +38,9 @@ public class UserAPIController extends BaseAPIController {
     @RequestMapping(value = RouteConfig.USER_API_SINGLE_PERSON_URL, method = RequestMethod.PUT,
             produces = "application/json")
     public User updateUser(@RequestBody User userWithNewValues) throws Exception {
-        if (true) {
-            User existingUser = userManager.get(userWithNewValues.getId());
+        userManager.save(userWithNewValues);
 
-            existingUser.setFirstName(userWithNewValues.getFirstName());
-            existingUser.setLastName(userWithNewValues.getLastName());
-
-            userManager.save(existingUser);
-
-            return existingUser;
-        } else {
-            // todo this looks better.. to be tested
-
-            userManager.save(userWithNewValues);
-
-            return userWithNewValues;
-        }
+        return userWithNewValues;
     }
 
     @ResponseBody
@@ -61,6 +48,7 @@ public class UserAPIController extends BaseAPIController {
             produces = "application/json")
     public User saveUser(@RequestBody User user) throws Exception {
         userManager.save(user);
+
         return user;
     }
 
