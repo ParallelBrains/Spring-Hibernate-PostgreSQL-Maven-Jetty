@@ -95,7 +95,7 @@
             <p>This is a template for a simple website. It has a secure area which requires logging in.</p>
             <p>Please login with username "<strong>guest</strong>", and password "<strong>pass</strong>".</p>
             <p>See the <a href="https://github.com/ParallelBrains/Spring-Hibernate-PostgreSQL-Maven-Jetty" target="_blank">GitHub repository</a> for more information.</p>
-            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            <p><a href="login" class="btn btn-primary btn-lg">Login or Register &raquo;</a></p>
         </div>
     </div>
 
