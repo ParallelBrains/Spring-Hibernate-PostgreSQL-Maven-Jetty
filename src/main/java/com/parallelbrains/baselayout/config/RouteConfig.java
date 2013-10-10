@@ -45,9 +45,9 @@ public class RouteConfig {
     // API Mappings
     public static final String BASE_API_URL = "/api";
 
-    public static final String PERSON_API_LIST_PEOPLE_URL = "/people"; // GET, POST
-    public static final String PERSON_API_SINGLE_PERSON_URL = "/people/{id}"; // GET, PUT, DELETE
+    public static final String PERSON_API_BASE_URL = "/people"; // GET, POST
+    public static final String PERSON_API_SINGLE_PERSON_URL = "/{id}"; // GET, PUT, DELETE
 
-    public static final String USER_API_LIST_PEOPLE_URL = "/users"; // GET, POST
-    public static final String USER_API_SINGLE_PERSON_URL = "/users/{id}"; // GET, PUT, DELETE
+    public static final String USER_API_BASE_URL = "/users"; // GET, POST
+    public static final String USER_API_SINGLE_PERSON_URL = "/{id}"; // GET, PUT, DELETE
 }

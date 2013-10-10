@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = RouteConfig.BASE_API_URL)
+@RequestMapping(value = RouteConfig.BASE_API_URL + RouteConfig.USER_API_BASE_URL)
 public class UserAPIController extends BaseAPIController {
 
     @Autowired
     private UserManager userManager;
 
     @ResponseBody
-    @RequestMapping(value = RouteConfig.USER_API_LIST_PEOPLE_URL, method = RequestMethod.GET,
+    @RequestMapping(method = RequestMethod.GET,
             produces = "application/json")
     public List<User> getUsers() throws Exception {
         return userManager.getAll();
@@ -44,7 +44,7 @@ public class UserAPIController extends BaseAPIController {
     }
 
     @ResponseBody
-    @RequestMapping(value = RouteConfig.USER_API_LIST_PEOPLE_URL, method = RequestMethod.POST,
+    @RequestMapping(method = RequestMethod.POST,
             produces = "application/json")
     public User saveUser(@RequestBody User user) throws Exception {
         userManager.save(user);

@@ -18,15 +18,14 @@ import java.util.List;
  * todo find a way to test API endpoints
  */
 @Controller
-@RequestMapping(value = RouteConfig.BASE_API_URL)
+@RequestMapping(value = RouteConfig.BASE_API_URL  + RouteConfig.PERSON_API_BASE_URL)
 public class PersonAPIController extends BaseAPIController {
 
     @Autowired
     private PersonManager personManager;
 
     @ResponseBody
-    @RequestMapping(value = RouteConfig.PERSON_API_LIST_PEOPLE_URL,
-            method = RequestMethod.GET,
+    @RequestMapping(method = RequestMethod.GET,
             produces = "application/json")
     public List<Person> getPeople() throws Exception {
         return personManager.getAll();
@@ -51,8 +50,7 @@ public class PersonAPIController extends BaseAPIController {
     }
 
     @ResponseBody
-    @RequestMapping(value = RouteConfig.PERSON_API_LIST_PEOPLE_URL,
-            method = RequestMethod.POST,
+    @RequestMapping(method = RequestMethod.POST,
             produces = "application/json")
     public Person savePerson(@RequestBody Person person, HttpServletResponse response) throws Exception {
         personManager.save(person);
