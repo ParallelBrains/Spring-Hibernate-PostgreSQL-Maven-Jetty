@@ -51,7 +51,7 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(value = RouteConfig.PROCESS_REGISTER, method = RequestMethod.POST)
-    public String savePerson(@ModelAttribute User user, HttpServletRequest request,
+    public String registerUser(@ModelAttribute User user, HttpServletRequest request,
                              HttpServletResponse response) {
 
         userManager.save(user);
