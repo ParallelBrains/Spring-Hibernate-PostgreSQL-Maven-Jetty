@@ -55,8 +55,11 @@ public class UserAPIController extends BaseAPIController {
     @ResponseBody
     @RequestMapping(value = RouteConfig.USER_API_SINGLE_PERSON_URL, method = RequestMethod.DELETE,
             produces = "application/json")
-    public void deleteUser(@PathVariable Long id) throws Exception {
+    public User deleteUser(@PathVariable Long id) throws Exception {
         userManager.delete(id);
+
+        // todo to trigger success() function of backbone upon deletion i needed to return something..
+        return new User();
     }
 
 }

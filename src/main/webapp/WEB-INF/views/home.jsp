@@ -43,10 +43,10 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure Area <b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">Secure Area <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header">People</li>
-                        <li><a href="person/list">People List</a></li>
+                        <li class="dropdown-header">Users</li>
+                        <li><a href="#users">User list</a></li>
                     </ul>
                 </li>
             </ul>
@@ -201,6 +201,8 @@
 
             <h1><@= person ? 'Edit' : 'New' @> Person</h1>
 
+            <input name="id" id="personId" type="hidden" value="<@= person ? person.get('id') : '' @>">
+
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input name="firstName" id="firstName" type="text" class="form-control" value="<@= person ? person.get('firstName') : '' @>">
@@ -225,6 +227,45 @@
     </div>
 </script>
 
+<script type="text/template" id="user-list-template">
+
+    <div class="container">
+
+        <h1>Users</h1>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <@ _.each(users, function(user) { @>
+                <tr>
+                    <td><@= user.id @></td>
+                    <td><@= htmlEncode(user.get('username')) @></td>
+                    <td><@= htmlEncode(user.get('firstName')) @></td>
+                    <td><@= htmlEncode(user.get('lastName')) @></td>
+                    <td><@= htmlEncode(user.get('email')) @></td>
+                    <td><a href="#users/edit/<@= user.id @>" class="btn btn-info btn-xs">Edit</a></td>
+                </tr>
+                <@ }); @>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="#users/new" class="btn btn-primary">New user</a>
+
+    </div>
+
+</script>
+
 
 <!-- HELPERS -->
 
@@ -247,6 +288,53 @@
         });
         return o;
     };
+</script>
+
+<script type="text/template" id="edit-user-template">
+    <div class="container">
+        <form class="edit-user-form">
+
+            <h1><@= user ? 'Edit' : 'New' @> User</h1>
+
+            <input name="id" id="userId" type="hidden" value="<@= user ? user.get('id') : '' @>">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input name="username" id="username" type="text" class="form-control" value="<@= user ? user.get('username') : '' @>">
+            </div>
+
+            <div class="form-group">
+                <label for="userFirstName">First Name</label>
+                <input name="firstName" id="userFirstName" type="text" class="form-control" value="<@= user ? user.get('firstName') : '' @>">
+            </div>
+
+            <div class="form-group">
+                <label for="userLastName">Last Name</label>
+                <input name="lastName" id="userLastName" type="text" class="form-control" value="<@= user ? user.get('lastName') : '' @>">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" id="email" type="text" class="form-control" value="<@= user ? user.get('email') : '' @>">
+            </div>
+
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input name="newPassword" id="newPassword" type="password" class="form-control">
+            </div>
+
+            <hr />
+
+            <button type="submit" class="btn btn-primary"><@= user ? 'Update' : 'Create' @></button>
+
+        </form>
+
+        <@ if(user) { @>
+            <br/>
+            <input type="hidden" name="id" value="<@= user.id @>" />
+            <button data-user-id="<@= user.id @>" class="btn btn-danger deleteUser">Delete</button>
+        <@ }; @>
+    </div>
 </script>
 
 <!-- BACKBONE -->
@@ -361,6 +449,72 @@
     var personEditView = new PersonEditView();
 
 
+    var Users = Backbone.Collection.extend({
+        url: '/api/users'
+    });
+
+    var UserListView = Backbone.View.extend({
+        el: '.page',
+        render: function () {
+            var that = this;
+            var users = new Users();
+            users.fetch({
+                success: function (users) {
+                    var template = _.template($('#user-list-template').html(), {users: users.models});
+                    that.$el.html(template);
+                }
+            })
+        }
+    });
+
+    var userListView = new UserListView();
+
+    var User = Backbone.Model.extend({
+        urlRoot: '/api/users'
+    });
+
+    var UserEditView = Backbone.View.extend({
+        el: '.page',
+        events: {
+            'submit .edit-user-form': 'saveUser',
+            'click .deleteUser': 'deleteUser'
+        },
+        saveUser: function (ev) {
+            var userDetails = $(ev.currentTarget).serializeObject();
+            var user = new User();
+            user.save(userDetails, {
+                success: function (user) {
+                    router.navigate('users', {trigger:true});
+                }
+            });
+            return false;
+        },
+        deleteUser: function (ev) {
+            this.user.destroy({
+                success: function () {
+                    router.navigate('users', {trigger:true});
+                }
+            })
+        },
+        render: function (options) {
+            var that = this;
+            if(options.id) {
+                that.user = new User({id: options.id});
+                that.user.fetch({
+                    success: function (user) {
+                        var template = _.template($('#edit-user-template').html(), {user: user});
+                        that.$el.html(template);
+                    }
+                })
+            } else {
+                var template = _.template($('#edit-user-template').html(), {user: null});
+                that.$el.html(template);
+            }
+        }
+    });
+
+    var userEditView = new UserEditView();
+
     /**
      * Router
      */
@@ -372,7 +526,10 @@
             "people/edit/:id": "editPerson",
             "people/new": "editPerson",
             "about": "about",
-            "contact": "contact"
+            "contact": "contact",
+            "users": "users",
+            "users/edit/:id": "editUser",
+            "users/new": "editUser"
         }
     });
 
@@ -392,6 +549,12 @@
     })
     router.on('route:contact', function() {
         contactView.render();
+    })
+    router.on('route:users', function() {
+        userListView.render();
+    })
+    router.on('route:editUser', function(id) {
+        userEditView.render({id: id});
     })
 
     Backbone.history.start();

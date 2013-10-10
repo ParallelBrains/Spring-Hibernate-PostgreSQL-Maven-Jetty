@@ -2,6 +2,7 @@ package com.parallelbrains.baselayout.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity(name = "project_user")
 public class User extends BaseModel {
@@ -20,6 +21,9 @@ public class User extends BaseModel {
 
     @Column
     private String email;
+
+    @Transient
+    private String newPassword;
 
     public String getUsername() {
         return username;
@@ -59,5 +63,13 @@ public class User extends BaseModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }

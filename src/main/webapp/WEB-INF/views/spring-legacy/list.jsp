@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../resources/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="../../../resources/assets/img/favicon.ico">
 
     <title>ParallelBrains baselayout</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../resources/assets/css/dist/bootstrap.css" rel="stylesheet">
+    <link href="../../../resources/assets/css/dist/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../resources/assets/css/dist/jumbotron.css" rel="stylesheet">
+    <link href="../../../resources/assets/css/dist/jumbotron.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -67,29 +66,46 @@
 
 <div class="container">
 
-    <h1>
-        Person ${person.id} ${person.firstName} ${person.lastName}
-    </h1>
+    <h1>People list</h1>
 
-    <form:form commandName="person" style="padding:8px">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${people}" var="v_person">
+                <tr>
+                    <td><a href="edit?id=${v_person.id}">${v_person.id}</a></td>
+                    <td>${v_person.firstName}</td>
+                    <td>${v_person.lastName}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 
-
-        <div class="form-group">
-            <label for="firstname">First Name</label>
-            <form:input path="firstName" cssClass="form-control" id="firstname"/>
-            <%--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">--%>
-        </div>
-        <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <form:input path="lastName" cssClass="form-control" id="lastname"/>
-            <%--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">--%>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Save</button>
-
-    </form:form>
     <br/>
     <br/>
+
+    <form action="edit">
+        <button type="submit" class="btn btn-primary">Add Person</button>
+    </form>
+
+    <br/>
+
+    <div class=" text-right">
+        <p class="text-muted">You are logged in as ${loggedInUserName}</p>
+
+        <form action="/j_spring_security_logout">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    </div>
+
 
 </div>
 
@@ -102,5 +118,6 @@
 
 </body>
 </html>
+
 
 

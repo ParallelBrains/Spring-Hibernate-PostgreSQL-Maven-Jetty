@@ -3,6 +3,7 @@ package com.parallelbrains.baselayout.service.impl;
 import com.parallelbrains.baselayout.model.User;
 import com.parallelbrains.baselayout.repository.UserDao;
 import com.parallelbrains.baselayout.service.UserManager;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,8 @@ public class UserManagerImpl implements UserManager {
         if (user.getId() == null) {
             // todo we might post encrypted passwords from BE
 //            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        } else if (StringUtils.isNotEmpty(user.getNewPassword())) {
+            user.setPassword(user.getNewPassword());
         }
 
         userDao.save(user);
