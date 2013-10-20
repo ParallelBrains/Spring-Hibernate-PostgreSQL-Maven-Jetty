@@ -68,6 +68,9 @@ git push heroku master
 heroku open
 ```
 
+## Thanks
+To Nicola Tassini for https://github.com/nicolatassini/Heroku-J2EE-Spring-MVC---Hibernate---PostgreSQL----Maven---Jetty which this project is built upon.
+
 ## Useful links
 
 * https://devcenter.heroku.com/articles/getting-started-with-spring-mvc-hibernate
