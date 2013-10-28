@@ -74,3 +74,7 @@ To Nicola Tassini for https://github.com/nicolatassini/Heroku-J2EE-Spring-MVC---
 ## Useful links
 
 * https://devcenter.heroku.com/articles/getting-started-with-spring-mvc-hibernate
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ParallelBrains/spring-hibernate-postgresql-maven-jetty/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
