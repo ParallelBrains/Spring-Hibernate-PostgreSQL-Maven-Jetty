@@ -46,7 +46,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Secure Area <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">Users</li>
-                        <li><a href="#users">User list</a></li>
+                        <li><a href="user/list">User list</a></li>
                     </ul>
                 </li>
             </ul>

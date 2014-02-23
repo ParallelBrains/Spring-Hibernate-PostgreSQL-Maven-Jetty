@@ -32,15 +32,23 @@ public class RouteConfig {
      */
     // Base View Mapping
     public static final String PERSON_BASE_MAPPING = "/person";
+    public static final String USER_BASE_MAPPING = "/user";
 
     // Sub View Mappings
     public static final String PERSON_EDIT = "edit"; // GET, POST
     public static final String PERSON_LIST = "list"; // GET
     public static final String PERSON_DELETE = "delete";
 
+    public static final String USER_EDIT = "edit"; // GET, POST
+    public static final String USER_LIST = "list"; // GET
+    public static final String USER_DELETE = "delete";
+
     // Views
     public static final String PERSON_EDIT_VIEW = "edit";
     public static final String PERSON_LIST_VIEW = "list";
+
+    public static final String USER_EDIT_VIEW = "edit";
+    public static final String USER_LIST_VIEW = "list";
 
     // API Mappings
     public static final String BASE_API_URL = "/api";

@@ -50,7 +50,7 @@ public class PersonAPIController extends BaseAPIController {
     }
 
     @ResponseBody
-    @RequestMapping(method = RequestMethod.POST,
+    @RequestMapping(method = RequestMethod.PUT,
             produces = "application/json")
     public Person savePerson(@RequestBody Person person, HttpServletResponse response) throws Exception {
         personManager.save(person);

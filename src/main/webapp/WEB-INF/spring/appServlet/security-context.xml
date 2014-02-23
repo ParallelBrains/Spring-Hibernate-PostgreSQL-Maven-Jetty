@@ -13,7 +13,7 @@
 
     <http auto-config='true'>
         <!-- Intercept-URLs will be evaluated in the order listed and the first match will be used. So you must put the most specific matches at the top. -->
-        <!--<intercept-url pattern="/person/**" access="ROLE_USER"/>-->
+        <intercept-url pattern="/user/**" access="ROLE_USER"/>
 
         <logout/>
 

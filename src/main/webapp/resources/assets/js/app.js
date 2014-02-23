@@ -183,10 +183,7 @@ var Router = Backbone.Router.extend({
         "people/edit/:id": "editPerson",
         "people/new": "editPerson",
         "about": "about",
-        "contact": "contact",
-        "users": "users",
-        "users/edit/:id": "editUser",
-        "users/new": "editUser"
+        "contact": "contact"
     }
 });
 

@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../../resources/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="../../resources/assets/img/favicon.ico">
 
     <title>ParallelBrains baselayout</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../resources/assets/css/dist/bootstrap.css" rel="stylesheet">
+    <link href="../../resources/assets/css/dist/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../../resources/assets/css/dist/jumbotron.css" rel="stylesheet">
+    <link href="../../resources/assets/css/dist/jumbotron.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,8 +46,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure Area <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header">People</li>
-                        <li><a href="person/list">People List</a></li>
+                        <li class="dropdown-header">Users</li>
+                        <li><a href="user/list">Users List</a></li>
                     </ul>
                 </li>
             </ul>
@@ -66,40 +67,39 @@
 
 <div class="container">
 
-    <h1>People list</h1>
+    <h1>
+        Person ${person.id} ${person.firstName} ${person.lastName}
+    </h1>
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${people}" var="v_person">
-                <tr>
-                    <td><a href="edit?id=${v_person.id}">${v_person.id}</a></td>
-                    <td>${v_person.firstName}</td>
-                    <td>${v_person.lastName}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+    <form:form commandName="user" style="padding:8px">
+
+        <div class="form-group">
+            <label for="username"> Username</label>
+            <form:input path="username" cssClass="form-control" id="username"/>
+        </div>
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <form:input path="firstName" cssClass="form-control" id="firstname"/>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <form:input path="lastName" cssClass="form-control" id="lastname"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+    </form:form>
+
+    <form:form commandName="user" action="/user/delete" style="padding:8px">
+        <form:hidden path="id"/>
+        <button type="submit" class="btn btn-danger delete">Delete</button>
+    </form:form>
 
     <br/>
-    <br/>
-
-    <form action="edit">
-        <button type="submit" class="btn btn-primary">Add Person</button>
-    </form>
-
     <br/>
 
     <div class=" text-right">
-        <p class="text-muted">You are logged in as ${loggedInUserName}</p>
+        <%--<p class="text-muted">You are logged in as ${loggedInUserName}</p>--%>
 
         <form action="/j_spring_security_logout">
             <button type="submit" class="btn btn-warning">Logout</button>
