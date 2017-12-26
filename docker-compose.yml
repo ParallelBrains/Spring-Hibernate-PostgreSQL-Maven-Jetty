@@ -1,0 +1,35 @@
+version: "2"
+
+---
+volumes:
+  postgresql-data:
+    driver: local
+  springframework-data:
+    driver: local
+
+
+---
+services:
+  db:
+    image: postgres:9.1
+    ports:
+    - 5433:5432
+    volumes:
+    - postgresql-data:/var/lib/postgresql/data
+    env_file:
+    - dev.env
+  web:
+    image: your_image_name_here:latest
+    build:
+      context: "."
+      dockerfile: dev.Dockerfile
+    command: catalina.sh run
+    ports:
+    - 8080:8080
+    working_dir: "/usr/local/tomcat"
+    stdin_open: true
+    tty: true
+    links:
+    - db
+    depends_on:
+    - db
